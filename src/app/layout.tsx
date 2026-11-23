@@ -37,25 +37,25 @@ const barlowCondensed = Barlow_Condensed({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://premiumexportshoes-com.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://autex.vercel.app",
   ),
-  title: "Premium Export Shoes - Luxury Handcrafted Footwear",
+  title: "Soleil — Luxury Handcrafted Footwear",
   description:
-    "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear. Built for those who move with intention. Premium materials, minimal design.",
+    "Experience unparalleled comfort with Soleil's handcrafted footwear. Built for those who move with intention. Premium materials, minimal design.",
   openGraph: {
-    title: "Premium Export Shoes - Luxury Handcrafted Footwear",
+    title: "Soleil — Luxury Handcrafted Footwear",
     description:
-      "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear.",
-    url: "https://premiumexportshoes-com.vercel.app/",
-    siteName: "Premium Export Shoes",
+      "Experience unparalleled comfort with Soleil's handcrafted footwear.",
+    url: "https://autex.vercel.app/",
+    siteName: "Soleil",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Export Shoes - Luxury Handcrafted Footwear",
+    title: "Soleil — Luxury Handcrafted Footwear",
     description:
-      "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear.",
+      "Experience unparalleled comfort with Soleil's handcrafted footwear.",
   },
 };
 

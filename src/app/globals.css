@@ -26,6 +26,24 @@ html {
   padding: 0;
 }
 
+/* ── Skeleton shimmer ───────────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #E8DFD0 0%,
+    #F5F0E8 25%,
+    #E8DFD0 50%,
+    #F5F0E8 75%,
+    #E8DFD0 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 400ms ease-in-out infinite;
+}
+
 body {
   margin: 0;
   padding: 0;

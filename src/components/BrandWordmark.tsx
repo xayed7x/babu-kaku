@@ -5,48 +5,21 @@ type BrandWordmarkSize = "sm" | "md" | "lg";
 interface BrandWordmarkProps {
   size?: BrandWordmarkSize;
   dark?: boolean;
-  cream?: boolean; // Force cream variant for SHOES/EXPORT
+  cream?: boolean;
   className?: string;
   mobileResponsive?: boolean;
 }
 
 const sizeConfig = {
-  sm: {
-    premium: "text-[14px]",
-    export: "text-[7px]",
-    shoes: "text-[14px]",
-    gap: "gap-0.5",
-  },
-  md: {
-    premium: "text-[18px]",
-    export: "text-[9px]",
-    shoes: "text-[18px]",
-    gap: "gap-0.5",
-  },
-  lg: {
-    premium: "text-[24px]",
-    export: "text-[12px]",
-    shoes: "text-[24px]",
-    gap: "gap-1",
-  },
+  sm: { wordmark: "text-[20px]", gap: "gap-0.5" },
+  md: { wordmark: "text-[26px]", gap: "gap-0.5" },
+  lg: { wordmark: "text-[34px]", gap: "gap-1" },
 };
 
 const mobileSizeConfig = {
-  sm: {
-    premium: "text-[clamp(10px,3vw,14px)]",
-    export: "text-[clamp(5px,1.5vw,7px)]",
-    shoes: "text-[clamp(10px,3vw,14px)]",
-  },
-  md: {
-    premium: "text-[clamp(12px,3.5vw,18px)]",
-    export: "text-[clamp(6px,1.75vw,9px)]",
-    shoes: "text-[clamp(12px,3.5vw,18px)]",
-  },
-  lg: {
-    premium: "text-[clamp(16px,4vw,24px)]",
-    export: "text-[clamp(8px,2vw,12px)]",
-    shoes: "text-[clamp(16px,4vw,24px)]",
-  },
+  sm: { wordmark: "text-[clamp(16px,4vw,20px)]" },
+  md: { wordmark: "text-[clamp(20px,5vw,26px)]" },
+  lg: { wordmark: "text-[clamp(26px,6vw,34px)]" },
 };
 
 export default function BrandWordmark({
@@ -56,26 +29,19 @@ export default function BrandWordmark({
   className = "",
   mobileResponsive = false,
 }: BrandWordmarkProps) {
-  const config = mobileResponsive ? mobileSizeConfig[size] : sizeConfig[size];
-  const gap = sizeConfig[size].gap;
+  const config = sizeConfig[size];
+  const mobileConfig = mobileSizeConfig[size];
+  const gap = config.gap;
 
-  const textColor = dark
-    ? "text-[#FAF8F4]"
-    : cream
-      ? "text-[#FAF8F4]"
-      : "text-[#1C1917]";
-  const premiumColor = "text-[#E31B23]";
+  const textColor = dark || cream ? "text-[#FAF8F4]" : "text-[#1C1917]";
+  const wordmarkSize = mobileResponsive ? mobileConfig.wordmark : config.wordmark;
 
   return (
     <Link
       href="/"
       className={`flex items-center ${gap} font-barlow-condensed font-extrabold italic uppercase tracking-tight leading-none ${className}`}
     >
-      <span className={`${config.premium} ${premiumColor}`}>PREMIUM</span>
-      <span className={`${config.export} ${textColor} tracking-[0.3em]`}>
-        EXPORT
-      </span>
-      <span className={`${config.shoes} ${textColor}`}>SHOES</span>
+      <span className={`${wordmarkSize} ${textColor} tracking-[0.08em]`}>Soleil</span>
     </Link>
   );
 }

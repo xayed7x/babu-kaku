@@ -20,12 +20,12 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: "Product Not Found | Premium Export Shoes" };
+  if (!product) return { title: "Product Not Found | Soleil" };
   return {
-    title: `${product.name} | Premium Export Shoes`,
+    title: `${product.name} | Soleil`,
     description: product.description,
     openGraph: {
-      title: `${product.name} | Premium Export Shoes`,
+      title: `${product.name} | Soleil`,
       description: product.description,
       images: product.images?.[0] ? [{ url: product.images[0] }] : [],
     },

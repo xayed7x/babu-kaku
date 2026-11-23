@@ -59,7 +59,7 @@ export default function ProductShowcase({
         >
           {displayProducts.map((product, index) => {
             const isFeatured = index === 1;
-            const imageSrc = product.images?.[0] || "/shoes/shoe-1.png";
+            const imageSrc = product.images?.[0] || "/product/loafer-tan.jpg";
             const orderClass =
               index === 0
                 ? "order-2 md:order-1"
@@ -92,6 +92,8 @@ export default function ProductShowcase({
                   <img
                     src={imageSrc}
                     alt={product.name}
+                    loading="eager"
+                    fetchPriority="high"
                     className={`object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl ${
                       isFeatured
                         ? "h-[280px] md:h-[320px]"
@@ -110,7 +112,7 @@ export default function ProductShowcase({
                   <span
                     className={`font-sans text-[10px] uppercase tracking-[0.15em] mb-2 ${isFeatured ? "text-white/80" : "text-[#6B6560]"}`}
                   >
-                    PREMIUM EXPORT SHOES
+                    SOLEIL
                   </span>
                   <Link
                     href={`/product/${product.slug}`}

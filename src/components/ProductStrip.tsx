@@ -101,7 +101,7 @@ export default function ProductStrip({ products = FALLBACK_PRODUCTS }: ProductSt
             {duplicatedProducts.map((product, idx) => {
               const rotateClass = idx % 2 === 0 ? "-rotate-2" : "rotate-2";
               const bg = backgroundColors[idx % backgroundColors.length];
-              const imageSrc = product.images?.[0] || "/shoes/shoe-1.png";
+              const imageSrc = product.images?.[0] || "/product/loafer-tan.jpg";
 
               return (
                 <Link
@@ -120,6 +120,7 @@ export default function ProductStrip({ products = FALLBACK_PRODUCTS }: ProductSt
                     <img
                       src={imageSrc}
                       alt={product.name}
+                      loading={idx < 4 ? "eager" : "lazy"}
                       className="w-[80%] h-[80%] object-contain pointer-events-none drop-shadow-lg"
                     />
                   </div>

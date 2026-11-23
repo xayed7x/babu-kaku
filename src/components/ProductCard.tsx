@@ -17,11 +17,13 @@ interface ProductCardProps {
   product: Product;
   /** Optional index for staggered entrances or list keys */
   index?: number;
+  /** When true, the primary image is loaded eagerly (use for above-the-fold cards) */
+  priority?: boolean;
   /** Backward compatibility placeholder */
   compact?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, index = 99, priority = false }: ProductCardProps) {
   const isSoldOut = Boolean(
     (product as { is_sold_out?: boolean }).is_sold_out ||
       (product.variants &&
@@ -61,7 +63,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     };
   }
 
-  const image1 = product.images?.[0] || "/shoes/product/loafer-tan.jpg";
+  const image1 = product.images?.[0] || "/product/loafer-tan.jpg";
   const image2 = product.images?.[1] || null;
   const hasSecondImage = Boolean(image2);
 
@@ -92,6 +94,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          priority={index < 3}
           className={`object-cover transition-all duration-500 ease-out [@media(hover:hover)]:group-hover:scale-[1.04] ${
             isSoldOut ? "saturate-50 opacity-90" : ""
           } ${hasSecondImage ? "[@media(hover:hover)]:group-hover:opacity-0" : ""}`}

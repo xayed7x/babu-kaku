@@ -152,7 +152,7 @@ export default function CartDrawer() {
                       const effectivePrice =
                         item.variant.price_override ?? item.product.price;
                       const imageSrc =
-                        item.product.images?.[0] || "/shoes/shoe-1.png";
+                        item.product.images?.[0] || "/product/loafer-tan.jpg";
                       const isRemote = imageSrc.startsWith("http");
 
                       return (

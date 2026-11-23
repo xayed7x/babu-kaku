@@ -9,8 +9,6 @@ interface SkeletonProps {
   height?: string | number;
 }
 
-const shimmerDuration = 1400; // 1.4s
-
 export default function Skeleton({
   className = "",
   variant = "rect",
@@ -28,7 +26,7 @@ export default function Skeleton({
   }, []);
 
   const baseClasses = "bg-[#E8DFD0] rounded";
-  
+
   const variantClasses = {
     text: "h-4",
     rect: "",
@@ -39,42 +37,12 @@ export default function Skeleton({
   if (width) style.width = typeof width === "number" ? `${width}px` : width;
   if (height) style.height = typeof height === "number" ? `${height}px` : height;
 
-  if (reducedMotion) {
-    return (
-      <div
-        className={`${baseClasses} ${variantClasses[variant]} ${className}`}
-        style={style}
-        aria-hidden="true"
-      />
-    );
-  }
-
   return (
-    <>
-      <style>{`
-        @keyframes skeleton-shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        .skeleton-shimmer {
-          background: linear-gradient(
-            90deg,
-            #E8DFD0 0%,
-            #F5F0E8 25%,
-            #E8DFD0 50%,
-            #F5F0E8 75%,
-            #E8DFD0 100%
-          );
-          background-size: 200% 100%;
-          animation: skeleton-shimmer ${shimmerDuration}ms ease-in-out infinite;
-        }
-      `}</style>
-      <div
-        className={`${baseClasses} ${variantClasses[variant]} skeleton-shimmer ${className}`}
-        style={style}
-        aria-hidden="true"
-      />
-    </>
+    <div
+      className={`${baseClasses} ${variantClasses[variant]} ${reducedMotion ? "" : "skeleton-shimmer"} ${className}`}
+      style={style}
+      aria-hidden="true"
+    />
   );
 }
 
